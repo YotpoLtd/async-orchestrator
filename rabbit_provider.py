@@ -1,2 +1,5 @@
-def provider(args):
-  print('rabbit: {}'.format(args))
+import logger
+
+
+def run(args):
+  logger.debug({'run': 'rabbit', 'args': args})
