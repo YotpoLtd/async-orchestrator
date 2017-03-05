@@ -1,6 +1,8 @@
 import json
 import socket
 import os
+import traceback
+
 
 timeout = float(os.environ.get('LOGSTASH_TIMEOUT'))
 host = os.environ.get('LOGSTASH_HOST')
@@ -37,3 +39,7 @@ def info(content):
 
 def error(content):
   log(level='ERROR', content=content)
+
+
+def sys_excepthook(t, value, tb):
+  error({'type': 'exception', 'exception_type': str(t), 'value': str(value), 'traceback': traceback.format_tb(tb)})
