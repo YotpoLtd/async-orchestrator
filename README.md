@@ -21,6 +21,7 @@ CONFIG_KEY=a
 
 
 example of toml as the consul value:
+you can override resque values for specific queues.
 
 ```
 [resque]
@@ -29,4 +30,13 @@ redis_port = 6379
 redis_db_num = 1
 threshold = 3
 plus = 1
+sleep = 20
+
+[resque.queue1]
+threshold = 6
+
+[resque.queue2]
+plus = 3
+sleep = 300
+
 ```
